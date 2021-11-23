@@ -1,4 +1,7 @@
 class Student:
+  name: str
+  marks: int
+
   def __init__(self, name, marks):
     self.name = name
     self.marks = marks
