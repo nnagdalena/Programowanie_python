@@ -1,4 +1,5 @@
 lista1: list[str] = ['Jarek', 'Darek', 'Marek', 'Szuwarek', 'Joachim']
+lista2: list[str] = ['Katarzyna', 'Darek', 'Marek', 'Szuwarek', 'Joachim']
 
 
 def print_list(lista: list):
