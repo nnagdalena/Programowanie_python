@@ -1,18 +1,18 @@
-from Links import Links
-from Ratings import Ratings
-from Movies import Movies
-from Tags import Tags
+import pytesseract
+import cv2
 
-from flask import Flask
-from flask_restful import Api
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-app = Flask(__name__)
-api = Api(app)
+img1 = cv2.cvtColor(cv2.imread('1.JPG'), cv2.COLOR_BGR2GRAY)
+img2 = cv2.cvtColor(cv2.imread('2.JPG'), cv2.COLOR_BGR2GRAY)
+img3 = cv2.cvtColor(cv2.imread('3.JPG'), cv2.COLOR_BGR2GRAY)
+img4 = cv2.cvtColor(cv2.imread('4.JPG'), cv2.COLOR_BGR2GRAY)
 
-api.add_resource(Movies, "/movies")
-api.add_resource(Ratings, "/ratings")
-api.add_resource(Links, "/links")
-api.add_resource(Tags, "/tags")
+def read_from_image(img):
+     return pytesseract.image_to_string(img)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+print(read_from_image(img1))
+print(read_from_image(img2))
+print(read_from_image(img3))
+print(read_from_image(img4))
