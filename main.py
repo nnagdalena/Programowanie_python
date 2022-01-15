@@ -1,18 +1,19 @@
-import pytesseract
-import cv2
+from osoba import Dietetyk, Pacjent
+from dieta import Dieta
+from zamowienie import Zamowienie
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+d = Dietetyk('Magda', 'Bogacz', 22, 'mid')
+p = Pacjent('Mirek', 'Mirowski', 33, 120)
+dd1 = Dieta('DASH', 1500, 'wege', 2234.666)
+dd2 = Dieta('DASH', 1200, 'vegan', 1800)
+dd3 = Dieta('Intermittent fasting', 1500, 'standard', 1600.88)
 
-img1 = cv2.cvtColor(cv2.imread('1.JPG'), cv2.COLOR_BGR2GRAY)
-img2 = cv2.cvtColor(cv2.imread('2.JPG'), cv2.COLOR_BGR2GRAY)
-img3 = cv2.cvtColor(cv2.imread('3.JPG'), cv2.COLOR_BGR2GRAY)
-img4 = cv2.cvtColor(cv2.imread('4.JPG'), cv2.COLOR_BGR2GRAY)
+z = Zamowienie()
+z.dieta = [dd1, dd2, dd3]
+z.pacjent = p
+z.dietetyk = d
+z.id = 123
 
-def read_from_image(img):
-     return pytesseract.image_to_string(img)
-
-
-print(read_from_image(img1))
-print(read_from_image(img2))
-print(read_from_image(img3))
-print(read_from_image(img4))
+print(z)
+print(z.ladnacena)
+print(z.ladnekcal)
